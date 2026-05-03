@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARCANE CLASH</title>
+<link rel="stylesheet" href="arcane_clash.css">
+</head>
+<body>
+<div id="tt"><div class="tt-t" id="tt-t"></div><div class="tt-b" id="tt-b"></div></div>
+<div id="info-modal">
+  <div class="info-card">
+    <button class="ic-close" onclick="closeInfo()">✕</button>
+    <div class="ic-title" id="ic-title"></div>
+    <div class="ic-body" id="ic-body"></div>
+  </div>
+</div>
+<!-- TITLE -->
+<div class="screen" id="screen-title">
+  <div class="title-glyph">✦</div>
+  <div class="title-main">ARCANE CLASH</div>
+  <div class="title-sub">TWO-PLAYER MAGIC COMBINATION COMBAT</div>
+  <button class="title-btn" onclick="goBuilder()">BEGIN RITUAL</button>
+  <div class="title-feats">
+    <div class="feat"><div class="feat-ic">🔮</div>Design your Magic Circle</div>
+    <div class="feat"><div class="feat-ic">⚡</div>Combine elemental tags</div>
+    <div class="feat"><div class="feat-ic">✦</div>Rules score on compatibility</div>
+    <div class="feat"><div class="feat-ic">🛡</div>Coherence = power</div>
+  </div>
+</div>
+<!-- BUILDER -->
+<div class="screen hidden" id="screen-builder">
+  <div class="bld-wrap">
+    <div><div class="bld-title">CIRCLE FORGE</div><div class="bld-sub" style="margin-top:4px">DESIGN YOUR MAGIC CIRCLE BEFORE BATTLE</div></div>
+    <div style="display:flex;justify-content:center">
+      <button style="font-size:8px;letter-spacing:1px;padding:4px 14px;border:1px solid var(--muted);border-radius:10px;background:transparent;color:var(--muted);cursor:pointer;font-family:var(--font-mono)" onclick="openInfo('circles')">? WHAT IS A MAGIC CIRCLE</button>
+    </div>
+    <div class="bld-players" id="bld-players"></div>
+    <div class="proceed-wrap"><button class="proceed-btn" onclick="startBattle()">ENTER THE ARENA →</button></div>
+  </div>
+</div>
+<!-- BATTLE -->
+<div class="screen hidden" id="screen-battle" style="display:flex;flex-direction:column">
+  <div class="bt-header">
+    <div class="bt-title">ARCANE CLASH</div>
+    <div class="bt-round"><span class="bt-round-num" id="round-num">I</span>ROUND</div>
+    <button class="rebuild-btn" onclick="goBuilder()">↩ REBUILD</button>
+  </div>
+  <div class="hp-row">
+    <div class="hp-blk">
+      <div class="hp-name" style="color:var(--p1)">PLAYER I</div>
+      <div class="hp-track"><div class="hp-fill" id="hpf1" style="width:100%"></div></div>
+      <div class="hp-txt"><span id="hpv1">100</span> / 100</div>
+    </div>
+    <div class="vs-gem">VS</div>
+    <div class="hp-blk r">
+      <div class="hp-name" style="color:var(--p2)">PLAYER II</div>
+      <div class="hp-track"><div class="hp-fill" id="hpf2" style="width:100%"></div></div>
+      <div class="hp-txt"><span id="hpv2">100</span> / 100</div>
+    </div>
+  </div>
+  <div class="arena" style="flex:1;overflow:hidden">
+    <div class="pp p1" id="pp1"></div>
+    <div class="mid">
+      <div class="mid-note" id="mid-note">SELECT<br>YOUR<br>TAGS</div>
+      <button class="fire-btn" onclick="fireClash()"><span class="fire-ic">⚡</span>FIRE</button>
+      <div class="mid-note" style="font-size:5.5px;opacity:.45">SIMULTANEOUS<br>COMBAT</div>
+    </div>
+    <div class="pp p2" id="pp2"></div>
+  </div>
+  <div class="bt-log">
+    <span class="log-lbl">LOG —</span>
+    <span class="log-msg" id="bt-log" style="color:var(--muted)">Game started. Select tags and fire.</span>
+  </div>
+</div>
+<!-- CLASH -->
+<div id="clash">
+  <div class="clash-bg"></div>
+  <div class="clash-inner" id="clash-inner"></div>
+</div>
+<!-- GAMEOVER -->
+<div class="screen hidden" id="screen-gameover">
+  <div class="go-title" id="go-title">VICTORY</div>
+  <div class="go-sub" id="go-sub"></div>
+  <div class="go-stats" id="go-stats"></div>
+  <div class="go-btns">
+    <button class="go-btn a" onclick="goBuilder()">REBUILD CIRCLES</button>
+    <button class="go-btn b" onclick="rematch()">REMATCH</button>
+  </div>
+</div>
+<script type="module" src="ui/app.js"></script>
+</body>
+</html>
